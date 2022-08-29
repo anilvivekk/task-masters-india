@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
-import './App.css';
 
 function App() {
-  const [snippet, setSnippet] = useState([]);
+  const [snippets, setSnippets] = useState([]);
   const [itemToSearch, SetItemToSearch] = useState('');
   const [searchedResult, setSearchResult] = useState(null);
 
@@ -14,7 +13,7 @@ function App() {
         const response = await fetch(BASE_URL);
         const json = await response.json();
         // console.log(json);
-        setSnippet(json.results);
+        setSnippets(json.results);
         // console.log(snippet);
         setSearchResult(json.results);
       }catch(err){
@@ -34,7 +33,7 @@ function App() {
       });
       setSearchResult(results);
     } else {
-      setSearchResult(snippet);
+      setSearchResult(snippets);
     }
     SetItemToSearch(keyWords);
   }
